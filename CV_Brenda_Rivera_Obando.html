@@ -4,482 +4,417 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CV — Brenda Rivera Obando</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --purple: #93009f;
-    --purple-light: #f5e8f7;
-    --purple-mid: #6b5b95;
-    --coral: #ff6b6b;
-    --white: #ffffff;
-    --gray-100: #f9f8fc;
-    --gray-200: #f0edf5;
-    --gray-500: #888;
-    --gray-700: #444;
-    --gray-900: #1a1a2e;
-    --font-display: 'Playfair Display', Georgia, serif;
-    --font-body: 'DM Sans', system-ui, sans-serif;
-  }
+:root {
+  --purple:       #93009f;
+  --purple-light: #f5e8f7;
+  --purple-mid:   #6b5b95;
+  --coral:        #ff6b6b;
+  --white:        #ffffff;
+  --gray-50:      #faf9fc;
+  --gray-100:     #f2eef7;
+  --gray-200:     #e4ddf0;
+  --gray-400:     #a89ec0;
+  --gray-500:     #7a6e90;
+  --gray-700:     #3e3552;
+  --gray-900:     #1a1228;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+  --radius:       6px;
+}
 
-  @media print {
-    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .page { page-break-after: always; }
-    .no-print { display: none; }
-  }
+@media print {
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  body { background: white !important; padding: 0 !important; }
+  .cv-wrapper { box-shadow: none !important; border-radius: 0 !important; max-width: 100% !important; }
+  .no-print { display: none !important; }
+  .cv-header { grid-template-columns: 190px 1fr !important; min-height: 230px !important; }
+  .cv-photo-col img { min-height: 230px !important; }
+  .cv-body { grid-template-columns: 200px 1fr !important; }
+}
 
-  html { font-size: 15px; }
+html { font-size: 15px; }
 
-  body {
-    font-family: var(--font-body);
-    background: #e8e4ef;
-    color: var(--gray-900);
-    min-height: 100vh;
-    padding: 32px 16px;
-    line-height: 1.6;
-  }
+body {
+  font-family: var(--font-body);
+  background: linear-gradient(135deg, #ede8f5 0%, #d5cde8 100%);
+  color: var(--gray-900);
+  min-height: 100vh;
+  padding: 36px 16px 52px;
+  line-height: 1.65;
+}
 
-  .cv-wrapper {
-    max-width: 860px;
-    margin: 0 auto;
-    background: var(--white);
-    box-shadow: 0 8px 48px rgba(110,0,130,0.12), 0 2px 8px rgba(0,0,0,0.06);
-    border-radius: 4px;
-    overflow: hidden;
-  }
+.cv-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--white);
+  box-shadow: 0 12px 60px rgba(100,0,130,0.14), 0 2px 10px rgba(0,0,0,0.07);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
 
-  /* ── HEADER ── */
+/* ═══ HEADER ═══ */
+.cv-header {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  background: var(--white);
+  border-bottom: 3px solid var(--purple);
+  position: relative;
+}
+
+.cv-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--purple) 55%, var(--coral) 100%);
+  z-index: 2;
+}
+
+.cv-photo-col {
+  position: relative;
+  overflow: hidden;
+  background: var(--purple-light);
+}
+
+.cv-photo-col img {
+  width: 100%;
+  height: 100%;
+  min-height: 255px;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.cv-header-info {
+  padding: 40px 40px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cv-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+  color: var(--purple);
+  line-height: 1.1;
+  letter-spacing: -0.4px;
+  margin-bottom: 8px;
+}
+
+.cv-role {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  color: var(--purple-mid);
+  margin-bottom: 16px;
+}
+
+.cv-tagline {
+  font-size: 0.86rem;
+  color: var(--gray-700);
+  line-height: 1.7;
+  max-width: 430px;
+  margin-bottom: 22px;
+}
+
+.cv-contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+}
+
+.cv-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.79rem;
+  color: var(--gray-700);
+  text-decoration: none;
+  transition: color .15s;
+}
+.cv-contact-item:hover { color: var(--purple); }
+
+.dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--coral);
+  flex-shrink: 0;
+}
+
+/* ═══ BODY ═══ */
+.cv-body {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+}
+
+/* ── SIDEBAR ── */
+.cv-sidebar {
+  background: var(--gray-50);
+  border-right: 1px solid var(--gray-200);
+  padding: 30px 22px;
+}
+
+.sb-section { margin-bottom: 26px; }
+
+.sb-title {
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  color: var(--purple);
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1.5px solid var(--purple);
+}
+
+.edu-item { margin-bottom: 12px; }
+.edu-degree { font-size: 0.79rem; font-weight: 600; color: var(--purple-mid); line-height: 1.35; }
+.edu-school { font-size: 0.74rem; color: var(--gray-500); margin-top: 1px; }
+.edu-note { font-size: 0.69rem; color: var(--coral); font-weight: 600; margin-top: 2px; }
+
+.lang-row { margin-bottom: 10px; }
+.lang-meta { display: flex; justify-content: space-between; margin-bottom: 3px; }
+.lang-name { font-size: 0.79rem; font-weight: 500; color: var(--gray-700); }
+.lang-level { font-size: 0.69rem; color: var(--gray-400); }
+.lang-track { height: 3px; background: var(--gray-200); border-radius: 2px; }
+.lang-fill { height: 3px; background: var(--purple); border-radius: 2px; }
+
+.tag-cloud { display: flex; flex-wrap: wrap; gap: 5px; }
+.tag {
+  background: var(--purple-light);
+  color: var(--purple);
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: 20px;
+  line-height: 1.5;
+}
+
+.sb-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+.sb-list li {
+  font-size: 0.78rem;
+  color: var(--gray-700);
+  padding-left: 12px;
+  position: relative;
+  line-height: 1.45;
+}
+.sb-list li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 7px;
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--coral);
+}
+
+/* ── MAIN ── */
+.cv-main { padding: 30px 36px; }
+
+.section { margin-bottom: 26px; }
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--purple);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1.5px;
+  background: linear-gradient(to right, var(--purple-light), transparent);
+}
+
+.exp-item {
+  position: relative;
+  padding-left: 14px;
+  margin-bottom: 17px;
+  padding-bottom: 17px;
+  border-bottom: 1px solid var(--gray-100);
+}
+.exp-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.exp-item::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 4px; bottom: 0;
+  width: 3px;
+  background: var(--purple-light);
+  border-radius: 2px;
+}
+
+.exp-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 2px;
+}
+
+.exp-company { font-size: 0.91rem; font-weight: 600; color: var(--gray-900); }
+
+.exp-period {
+  font-size: 0.71rem;
+  font-weight: 500;
+  color: var(--purple-mid);
+  background: var(--purple-light);
+  padding: 2px 9px;
+  border-radius: 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.exp-role {
+  font-size: 0.77rem;
+  font-weight: 600;
+  color: var(--coral);
+  letter-spacing: 0.3px;
+  margin-bottom: 7px;
+}
+
+.exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 3px; }
+.exp-bullets li {
+  font-size: 0.79rem;
+  color: var(--gray-700);
+  padding-left: 12px;
+  position: relative;
+  line-height: 1.55;
+}
+.exp-bullets li::before {
+  content: '·';
+  position: absolute;
+  left: 0; top: -1px;
+  color: var(--purple);
+  font-size: 1.3em;
+  font-weight: 700;
+}
+
+.award-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #fffbee;
+  border: 1px solid #f0d070;
+  color: #9a7a00;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 10px;
+  margin-top: 6px;
+}
+.award-badge::before { content: '★'; font-size: 0.8em; }
+
+/* ── FOOTER ── */
+.cv-footer {
+  background: var(--gray-50);
+  border-top: 1px solid var(--gray-200);
+  padding: 14px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.footer-brand { font-size: 0.77rem; color: var(--purple-mid); font-weight: 500; }
+.footer-tagline { font-size: 0.7rem; color: var(--gray-400); font-style: italic; }
+.footer-date { font-size: 0.7rem; color: var(--gray-400); }
+
+/* ── BUTTON ── */
+.no-print { text-align: center; padding: 20px 0 8px; }
+.btn-print {
+  background: var(--purple);
+  color: white;
+  border: none;
+  padding: 11px 32px;
+  border-radius: 28px;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 0.4px;
+  transition: background .2s, transform .12s;
+}
+.btn-print:hover { background: #7a0087; }
+.btn-print:active { transform: scale(.97); }
+
+/* ═══════════════════════════
+   RESPONSIVE BREAKPOINTS
+═══════════════════════════ */
+
+/* ── Tablet (≤ 740px): header en columna, sidebar se mantiene ── */
+@media (max-width: 740px) {
+  body { padding: 0 0 40px; }
+
   .cv-header {
-    background: var(--white);
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    min-height: 260px;
-    border-bottom: 3px solid var(--purple);
+    grid-template-columns: 1fr;
   }
 
-  .cv-header-photo {
-    background: var(--purple-light);
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    overflow: hidden;
-    position: relative;
+  .cv-photo-col {
+    height: 280px;
   }
-
-  .cv-header-photo::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 6px;
-    background: var(--purple);
-  }
-
-  .cv-header-photo img {
-    width: 100%;
-    height: 260px;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-  }
-
-  .cv-header-photo .photo-placeholder {
-    width: 100%;
-    height: 260px;
-    background: linear-gradient(160deg, var(--purple-light) 0%, #e0d0ef 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .cv-header-photo .photo-placeholder span {
-    font-size: 52px;
-    color: var(--purple);
-    opacity: 0.4;
+  .cv-photo-col img {
+    min-height: 280px;
+    height: 280px;
+    object-position: center 12%;
   }
 
   .cv-header-info {
-    padding: 36px 40px 28px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
+    padding: 28px 28px 22px;
   }
 
-  .cv-header-info::before {
-    content: '';
-    position: absolute;
-    top: 0; right: 0;
-    width: 6px;
-    height: 100%;
-    background: var(--gray-100);
-  }
+  .cv-tagline { max-width: 100%; }
 
-  .cv-name {
-    font-family: var(--font-display);
-    font-size: 2.1rem;
-    font-weight: 700;
-    color: var(--purple);
-    letter-spacing: -0.5px;
-    line-height: 1.15;
-    margin-bottom: 6px;
-  }
+  .cv-footer { padding: 14px 24px; }
+}
 
-  .cv-role {
-    font-size: 0.82rem;
-    font-weight: 600;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--purple-mid);
-    margin-bottom: 18px;
-  }
-
-  .cv-tagline {
-    font-size: 0.9rem;
-    color: var(--gray-700);
-    line-height: 1.65;
-    max-width: 420px;
-    margin-bottom: 22px;
-  }
-
-  .cv-contacts {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px 20px;
-  }
-
-  .cv-contact-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.82rem;
-    color: var(--gray-700);
-    text-decoration: none;
-  }
-
-  .cv-contact-item .dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--coral);
-    flex-shrink: 0;
-  }
-
-  /* ── BODY LAYOUT ── */
+/* ── Mobile (≤ 580px): full single column ── */
+@media (max-width: 580px) {
   .cv-body {
-    display: grid;
-    grid-template-columns: 220px 1fr;
+    grid-template-columns: 1fr;
   }
 
-  /* ── SIDEBAR ── */
   .cv-sidebar {
-    background: var(--gray-100);
-    padding: 32px 24px;
-    border-right: 1px solid var(--gray-200);
+    border-right: none;
+    border-bottom: 2px solid var(--purple-light);
+    padding: 26px 20px;
   }
 
-  .sidebar-section {
-    margin-bottom: 28px;
-  }
+  .cv-main { padding: 26px 20px; }
 
-  .sidebar-title {
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--purple);
-    margin-bottom: 12px;
-    padding-bottom: 6px;
-    border-bottom: 1.5px solid var(--purple);
-  }
-
-  .sidebar-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .sidebar-list li {
-    font-size: 0.82rem;
-    color: var(--gray-700);
-    line-height: 1.4;
-    padding-left: 12px;
-    position: relative;
-  }
-
-  .sidebar-list li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 7px;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: var(--coral);
-  }
-
-  .skill-tag {
-    display: inline-block;
-    background: var(--purple-light);
-    color: var(--purple);
-    font-size: 0.75rem;
-    font-weight: 500;
-    padding: 3px 9px;
-    border-radius: 20px;
-    margin: 3px 3px 0 0;
-    line-height: 1.5;
-  }
-
-  .lang-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 8px;
-  }
-
-  .lang-name {
-    font-size: 0.82rem;
-    color: var(--gray-700);
-    font-weight: 500;
-  }
-
-  .lang-level {
-    font-size: 0.72rem;
-    color: var(--gray-500);
-  }
-
-  .lang-bar-bg {
-    height: 3px;
-    background: var(--gray-200);
-    border-radius: 2px;
-    margin-top: 3px;
-    margin-bottom: 10px;
-  }
-
-  .lang-bar-fill {
-    height: 3px;
-    background: var(--purple);
-    border-radius: 2px;
-  }
-
-  .edu-item {
-    margin-bottom: 14px;
-  }
-
-  .edu-degree {
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--purple-mid);
-    line-height: 1.35;
-    margin-bottom: 2px;
-  }
-
-  .edu-school {
-    font-size: 0.78rem;
-    color: var(--gray-500);
-    line-height: 1.35;
-  }
-
-  .edu-note {
-    font-size: 0.72rem;
-    color: var(--coral);
-    margin-top: 2px;
-    font-weight: 500;
-  }
-
-  /* ── MAIN CONTENT ── */
-  .cv-main {
-    padding: 32px 36px;
-  }
-
-  .section {
-    margin-bottom: 30px;
-  }
-
-  .section-title {
-    font-family: var(--font-display);
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--purple);
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .section-title::after {
-    content: '';
-    flex: 1;
-    height: 1.5px;
-    background: linear-gradient(to right, var(--purple-light), transparent);
-  }
-
-  /* Experience */
-  .exp-item {
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--gray-200);
-    position: relative;
-    padding-left: 14px;
-  }
-
-  .exp-item::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 4px;
-    bottom: 0;
-    width: 3px;
-    background: var(--purple-light);
-    border-radius: 2px;
-  }
-
-  .exp-item:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-  }
-
-  .exp-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 4px;
-    margin-bottom: 3px;
-  }
-
-  .exp-company {
-    font-weight: 600;
-    font-size: 0.92rem;
-    color: var(--gray-900);
-  }
-
-  .exp-period {
-    font-size: 0.75rem;
-    color: var(--purple-mid);
-    font-weight: 500;
-    background: var(--purple-light);
-    padding: 2px 8px;
-    border-radius: 10px;
-    white-space: nowrap;
-  }
-
-  .exp-role {
-    font-size: 0.8rem;
-    color: var(--coral);
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    margin-bottom: 7px;
-  }
-
-  .exp-bullets {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-  }
-
-  .exp-bullets li {
-    font-size: 0.81rem;
-    color: var(--gray-700);
-    padding-left: 12px;
-    position: relative;
-    line-height: 1.5;
-  }
-
-  .exp-bullets li::before {
-    content: '·';
-    position: absolute;
-    left: 0;
-    top: -1px;
-    color: var(--purple);
-    font-size: 1.2em;
-    font-weight: 700;
-  }
-
-  .highlight-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    background: #fff5e6;
-    border: 1px solid #f5c87a;
-    color: #b07a00;
-    font-size: 0.74rem;
-    font-weight: 600;
-    padding: 3px 10px;
-    border-radius: 10px;
-    margin-top: 5px;
-  }
-
-  .highlight-badge::before {
-    content: '★';
-    font-size: 0.8em;
-  }
-
-  /* Footer */
   .cv-footer {
-    background: var(--gray-100);
-    border-top: 1px solid var(--gray-200);
-    padding: 16px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .cv-footer-brand {
-    font-size: 0.78rem;
-    color: var(--purple-mid);
-    font-weight: 500;
-  }
-
-  .cv-footer-tagline {
-    font-size: 0.72rem;
-    color: var(--gray-500);
-    font-style: italic;
-  }
-
-  .cv-footer-date {
-    font-size: 0.72rem;
-    color: var(--gray-500);
-  }
-
-  /* Print button */
-  .no-print {
+    padding: 14px 20px;
+    justify-content: center;
     text-align: center;
-    padding: 20px;
+    flex-direction: column;
   }
 
-  .btn-print {
-    background: var(--purple);
-    color: white;
-    border: none;
-    padding: 10px 28px;
-    border-radius: 24px;
-    font-family: var(--font-body);
-    font-size: 0.88rem;
-    font-weight: 500;
-    cursor: pointer;
-    letter-spacing: 0.5px;
-    transition: background 0.2s;
-  }
+  .cv-name { font-size: 1.7rem; }
 
-  .btn-print:hover { background: #7a0087; }
+  .cv-header-info { padding: 22px 20px 20px; }
 
-  /* Responsive */
-  @media (max-width: 680px) {
-    body { padding: 0; }
-    .cv-header { grid-template-columns: 1fr; }
-    .cv-header-photo { height: 220px; }
-    .cv-header-photo img { height: 220px; }
-    .cv-body { grid-template-columns: 1fr; }
-    .cv-sidebar { border-right: none; border-bottom: 1px solid var(--gray-200); }
-    .cv-main { padding: 24px 20px; }
-    .cv-header-info { padding: 24px 20px; }
-    .cv-footer { flex-direction: column; gap: 4px; text-align: center; padding: 14px 20px; }
-  }
+  .cv-contacts { gap: 5px 14px; }
+
+  .exp-head { flex-direction: column; gap: 3px; }
+}
+
+/* ── Very small (≤ 390px) ── */
+@media (max-width: 390px) {
+  .cv-photo-col { height: 230px; }
+  .cv-photo-col img { min-height: 230px; height: 230px; }
+  .cv-name { font-size: 1.45rem; }
+  .cv-role { font-size: 0.62rem; letter-spacing: 1.8px; }
+  .cv-tagline { font-size: 0.82rem; }
+}
 </style>
 </head>
 <body>
@@ -492,15 +427,17 @@
 
   <!-- HEADER -->
   <header class="cv-header">
-    <div class="cv-header-photo">
-      <img src="/mnt/user-data/uploads/Perfil_Profesional.jpg" alt="Brenda Rivera Obando" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-      <div class="photo-placeholder" style="display:none;">
-        <span>👤</span>
-      </div>
+    <div class="cv-photo-col">
+      <img
+        src="https://raw.githubusercontent.com/brendario/cv-brenda-rivera/refs/heads/main/brenda.jpg"
+        alt="Brenda Rivera Obando"
+        loading="eager"
+        onerror="this.style.background='var(--purple-light)'; this.style.minHeight='255px';"
+      >
     </div>
     <div class="cv-header-info">
       <h1 class="cv-name">Brenda Rivera<br>Obando</h1>
-      <p class="cv-role">Ejecutiva Comercial B2B · Desarrollo de Negocios</p>
+      <p class="cv-role">Ejecutiva Comercial B2B &nbsp;·&nbsp; Desarrollo de Negocios</p>
       <p class="cv-tagline">Profesional con más de 10 años de trayectoria en ventas consultivas y desarrollo comercial en banca, seguros, tecnología y telecomunicaciones. Especialista en construir relaciones de largo plazo, generar oportunidades y cerrar soluciones empresariales con impacto real.</p>
       <div class="cv-contacts">
         <span class="cv-contact-item"><span class="dot"></span>Corrientes, Argentina</span>
@@ -511,21 +448,22 @@
     </div>
   </header>
 
+  <!-- BODY -->
   <div class="cv-body">
 
     <!-- SIDEBAR -->
     <aside class="cv-sidebar">
 
-      <div class="sidebar-section">
-        <p class="sidebar-title">Educación</p>
+      <div class="sb-section">
+        <p class="sb-title">Educación</p>
         <div class="edu-item">
           <p class="edu-degree">Ingeniería en Ciberseguridad</p>
-          <p class="edu-school">Universidad Andrés Bello, Chile</p>
+          <p class="edu-school">Univ. Andrés Bello, Chile</p>
           <p class="edu-note">Distinción máxima</p>
         </div>
         <div class="edu-item">
-          <p class="edu-degree">Ingeniería en Administración de Empresas</p>
-          <p class="edu-school">Universidad de Los Lagos, Osorno</p>
+          <p class="edu-degree">Ing. en Administración de Empresas</p>
+          <p class="edu-school">Univ. de Los Lagos, Osorno</p>
         </div>
         <div class="edu-item">
           <p class="edu-degree">Ing. Civil Informática</p>
@@ -533,58 +471,63 @@
         </div>
       </div>
 
-      <div class="sidebar-section">
-        <p class="sidebar-title">Formación</p>
-        <ul class="sidebar-list">
-          <li>Máster en Marketing Digital</li>
-          <li>IA Aplicada a Negocios</li>
-          <li>Automatización y Herramientas Digitales</li>
+      <div class="sb-section">
+        <p class="sb-title">Formación Adicional</p>
+        <ul class="sb-list">
+          <li>Máster / Diplomado en Marketing Digital</li>
+          <li>IA aplicada a negocios y automatización</li>
+          <li>Herramientas digitales y transformación</li>
         </ul>
       </div>
 
-      <div class="sidebar-section">
-        <p class="sidebar-title">Idiomas</p>
-        <div class="lang-item"><span class="lang-name">Español</span><span class="lang-level">Nativo</span></div>
-        <div class="lang-bar-bg"><div class="lang-bar-fill" style="width:100%"></div></div>
-        <div class="lang-item"><span class="lang-name">Inglés</span><span class="lang-level">Intermedio</span></div>
-        <div class="lang-bar-bg"><div class="lang-bar-fill" style="width:60%"></div></div>
-        <div class="lang-item"><span class="lang-name">Portugués</span><span class="lang-level">Básico</span></div>
-        <div class="lang-bar-bg"><div class="lang-bar-fill" style="width:30%"></div></div>
-      </div>
-
-      <div class="sidebar-section">
-        <p class="sidebar-title">Competencias Clave</p>
-        <div>
-          <span class="skill-tag">Ventas Consultivas B2B</span>
-          <span class="skill-tag">Prospección Comercial</span>
-          <span class="skill-tag">Desarrollo de Negocios</span>
-          <span class="skill-tag">Gestión de Cartera</span>
-          <span class="skill-tag">Negociación</span>
-          <span class="skill-tag">CRM</span>
-          <span class="skill-tag">Coordinación de Proyectos</span>
-          <span class="skill-tag">Liderazgo de Equipos</span>
-          <span class="skill-tag">Levantamiento de Requisitos</span>
-          <span class="skill-tag">Relaciones Corporativas</span>
+      <div class="sb-section">
+        <p class="sb-title">Idiomas</p>
+        <div class="lang-row">
+          <div class="lang-meta"><span class="lang-name">Español</span><span class="lang-level">Nativo</span></div>
+          <div class="lang-track"><div class="lang-fill" style="width:100%"></div></div>
+        </div>
+        <div class="lang-row">
+          <div class="lang-meta"><span class="lang-name">Inglés</span><span class="lang-level">Intermedio</span></div>
+          <div class="lang-track"><div class="lang-fill" style="width:60%"></div></div>
+        </div>
+        <div class="lang-row">
+          <div class="lang-meta"><span class="lang-name">Portugués</span><span class="lang-level">Básico</span></div>
+          <div class="lang-track"><div class="lang-fill" style="width:28%"></div></div>
         </div>
       </div>
 
-      <div class="sidebar-section">
-        <p class="sidebar-title">Herramientas</p>
-        <ul class="sidebar-list">
+      <div class="sb-section">
+        <p class="sb-title">Competencias Clave</p>
+        <div class="tag-cloud">
+          <span class="tag">Ventas B2B</span>
+          <span class="tag">Prospección</span>
+          <span class="tag">Desarrollo de negocios</span>
+          <span class="tag">Gestión de cartera</span>
+          <span class="tag">Negociación</span>
+          <span class="tag">CRM</span>
+          <span class="tag">Liderazgo</span>
+          <span class="tag">Requisitos funcionales</span>
+          <span class="tag">Coordinación de proyectos</span>
+          <span class="tag">Relaciones corporativas</span>
+        </div>
+      </div>
+
+      <div class="sb-section">
+        <p class="sb-title">Herramientas</p>
+        <ul class="sb-list">
           <li>HubSpot CRM</li>
           <li>Google Workspace</li>
           <li>Microsoft 365</li>
-          <li>LinkedIn Sales Navigator</li>
-          <li>ChatGPT / IA Aplicada</li>
+          <li>LinkedIn / Sales Navigator</li>
+          <li>ChatGPT · IA Aplicada</li>
           <li>Zoom · Meet · Teams</li>
-          <li>WordPress</li>
-          <li>Google Analytics</li>
+          <li>WordPress · Google Analytics</li>
         </ul>
       </div>
 
-      <div class="sidebar-section">
-        <p class="sidebar-title">Sectores</p>
-        <ul class="sidebar-list">
+      <div class="sb-section">
+        <p class="sb-title">Sectores</p>
+        <ul class="sb-list">
           <li>Banca y Finanzas</li>
           <li>Seguros</li>
           <li>Telecomunicaciones</li>
@@ -599,13 +542,11 @@
 
     <!-- MAIN -->
     <main class="cv-main">
-
-      <!-- EXPERIENCE -->
       <section class="section">
         <h2 class="section-title">Experiencia Profesional</h2>
 
         <div class="exp-item">
-          <div class="exp-header">
+          <div class="exp-head">
             <span class="exp-company">RíoImpulso Digital</span>
             <span class="exp-period">Mar 2025 – Actualidad</span>
           </div>
@@ -614,19 +555,19 @@
             <li>Desarrollo comercial B2B y prospección activa para empresas de distintos rubros.</li>
             <li>Gestión integral de clientes: seguimiento, coordinación y cierre de proyectos digitales.</li>
             <li>Elaboración de propuestas comerciales y levantamiento de requerimientos funcionales.</li>
-            <li>Implementación de soluciones orientadas a automatización, presencia digital y optimización operacional.</li>
+            <li>Implementación de soluciones de automatización, presencia digital y optimización operacional.</li>
             <li>Coordinación con equipos técnicos y documentación de procesos.</li>
           </ul>
         </div>
 
         <div class="exp-item">
-          <div class="exp-header">
+          <div class="exp-head">
             <span class="exp-company">TGF Clean</span>
             <span class="exp-period">Feb 2026 – Actualidad</span>
           </div>
           <p class="exp-role">Desarrollo de Negocios B2B (Freelance)</p>
           <ul class="exp-bullets">
-            <li>Investigación, construcción y gestión de bases de datos de empresas potenciales.</li>
+            <li>Investigación, construcción y gestión de bases de datos de empresas objetivo.</li>
             <li>Prospección comercial multicanal: llamadas, correo electrónico y seguimiento estructurado.</li>
             <li>Coordinación de reuniones comerciales y derivación de oportunidades al área técnica.</li>
             <li>Acompañamiento de clientes corporativos e impulso de proyectos de optimización digital.</li>
@@ -634,9 +575,9 @@
         </div>
 
         <div class="exp-item">
-          <div class="exp-header">
+          <div class="exp-head">
             <span class="exp-company">Banco Santander Río</span>
-            <span class="exp-period">Ene 2026 – May 2026</span>
+            <span class="exp-period">Ene – May 2026</span>
           </div>
           <p class="exp-role">Coordinadora Freelance de Equipos de Venta</p>
           <ul class="exp-bullets">
@@ -646,7 +587,7 @@
         </div>
 
         <div class="exp-item">
-          <div class="exp-header">
+          <div class="exp-head">
             <span class="exp-company">Banco Santander Río</span>
             <span class="exp-period">Oct – Dic 2025</span>
           </div>
@@ -659,7 +600,7 @@
         </div>
 
         <div class="exp-item">
-          <div class="exp-header">
+          <div class="exp-head">
             <span class="exp-company">Propital</span>
             <span class="exp-period">Nov 2024 – Jul 2025</span>
           </div>
@@ -672,7 +613,19 @@
         </div>
 
         <div class="exp-item">
-          <div class="exp-header">
+          <div class="exp-head">
+            <span class="exp-company">Te Rastreo SpA</span>
+            <span class="exp-period">Ene 2024 – Actualidad</span>
+          </div>
+          <p class="exp-role">Soporte Técnico y Comercial</p>
+          <ul class="exp-bullets">
+            <li>Atención y soporte a clientes, seguimiento comercial y coordinación de requerimientos.</li>
+            <li>Apoyo en soluciones digitales y gestión de relaciones comerciales.</li>
+          </ul>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-head">
             <span class="exp-company">inCruises</span>
             <span class="exp-period">Feb 2023 – Actualidad</span>
           </div>
@@ -685,7 +638,7 @@
         </div>
 
         <div class="exp-item">
-          <div class="exp-header">
+          <div class="exp-head">
             <span class="exp-company">GTD Telsur</span>
             <span class="exp-period">2022 – 2023</span>
           </div>
@@ -697,7 +650,19 @@
         </div>
 
         <div class="exp-item">
-          <div class="exp-header">
+          <div class="exp-head">
+            <span class="exp-company">Kimenda SpA</span>
+            <span class="exp-period">2021 – 2023</span>
+          </div>
+          <p class="exp-role">Asistente Comercial y Técnica</p>
+          <ul class="exp-bullets">
+            <li>Soporte comercial, coordinación de instalaciones y soporte técnico GPS.</li>
+            <li>Elaboración de reportes y capacitación a clientes en plataformas digitales.</li>
+          </ul>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-head">
             <span class="exp-company">AFP PlanVital</span>
             <span class="exp-period">2019 – 2020</span>
           </div>
@@ -706,24 +671,24 @@
             <li>Asesoramiento previsional a personas y empresas; desarrollo de convenios corporativos.</li>
             <li>Gestión de cartera, trabajo en terreno y capacitación en herramientas digitales.</li>
           </ul>
-          <p class="highlight-badge">Logro: Convenio con Subus — acceso directo a más de 300 trabajadores para asesoramiento previsional</p>
+          <p class="award-badge">Logro: Convenio con Subus — acceso directo a más de 300 trabajadores</p>
         </div>
 
         <div class="exp-item">
-          <div class="exp-header">
+          <div class="exp-head">
             <span class="exp-company">MetLife</span>
             <span class="exp-period">Período anterior</span>
           </div>
           <p class="exp-role">Ejecutiva Comercial — Seguros y Asesoramiento Financiero</p>
           <ul class="exp-bullets">
-            <li>Venta consultiva de seguros y desarrollo de cartera a largo plazo.</li>
-            <li>Prospección comercial activa y atención personalizada de clientes.</li>
+            <li>Venta consultiva de seguros, desarrollo de cartera y atención personalizada de clientes.</li>
+            <li>Prospección comercial activa y cumplimiento de metas de alto rendimiento.</li>
           </ul>
-          <p class="highlight-badge">Logro: Premio Triunfo por cumplimiento de metas en etapa inicial de la compañía</p>
+          <p class="award-badge">Logro: Premio Triunfo por cumplimiento de metas en etapa inicial</p>
         </div>
 
         <div class="exp-item">
-          <div class="exp-header">
+          <div class="exp-head">
             <span class="exp-company">CruzBlanca</span>
             <span class="exp-period">Período anterior</span>
           </div>
@@ -734,20 +699,19 @@
         </div>
 
       </section>
-
     </main>
   </div>
 
   <!-- FOOTER -->
   <footer class="cv-footer">
-    <span class="cv-footer-brand">Brenda Rivera Obando · RíoImpulso Digital</span>
-    <span class="cv-footer-tagline">Desarrollo Comercial · Ventas Consultivas · Soluciones Digitales</span>
-    <span class="cv-footer-date">Mayo 2026</span>
+    <span class="footer-brand">Brenda Rivera Obando · RíoImpulso Digital</span>
+    <span class="footer-tagline">Desarrollo Comercial · Ventas Consultivas · Soluciones Digitales</span>
+    <span class="footer-date">Mayo 2026</span>
   </footer>
 
 </div>
 
-<div class="no-print" style="padding-top: 12px;">
+<div class="no-print" style="padding-top: 14px;">
   <button class="btn-print" onclick="window.print()">⬇ Exportar a PDF / Imprimir</button>
 </div>
 
